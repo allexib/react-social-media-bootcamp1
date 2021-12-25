@@ -2,18 +2,28 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 
 function Header(props) {
-    return <h1>hi react {props.username}</h1>
+    if (true) {
+        return <h1>hi react {props.username}</h1>
+    }else {
+        return <h1>hi guest</h1>
+    }
+
 }
 
+function Layout(props) {
+    return <div style={{background:'gold'}}>
+        {props.children}
+    </div>
+}
 
 const rootNode = document.getElementById('root')
 
 
 ReactDOM.render(
-    <div>
+    <Layout>
         <Header username='kama' />
 
-    </div>,
+    </Layout>,
     rootNode
 )
 
