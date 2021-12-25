@@ -1,19 +1,21 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-const year = 2022
-const greeting = (
-    <div>
-        <h1>hi in {year}</h1>
-        <p>welcome to react</p>
-    </div>
-)
+const Header = () => {
+    return <h1>hi react</h1>
+}
+
+
+// class Header extends React.Component{
+//     render(){
+//         return<h1>hi react</h1>
+//     }
+// }
+
 const rootNode = document.getElementById('root')
 
 
-
-
-ReactDOM.render(greeting, rootNode)
+ReactDOM.render(<Header/>, rootNode)
 
 
 
