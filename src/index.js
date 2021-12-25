@@ -15,14 +15,19 @@ function Login() {
     return <p>please login</p>
 }
 
+function Signout() {
+    return <button>signout</button>
+}
+
 const rootNode = document.getElementById('root')
 
 const isAuth = true
 
+
 ReactDOM.render(
     <Layout>
         {isAuth ? <Header username='kama'/> : <Login/>}
-
+        {isAuth && <Signout/>}
     </Layout>,
     rootNode
 )
