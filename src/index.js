@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {Fragment} from 'react'
 import ReactDOM from 'react-dom'
 
 function Header(props) {
@@ -19,18 +19,23 @@ function Signout() {
     return <button>signout</button>
 }
 
-const rootNode = document.getElementById('root')
 
 const isAuth = true
 
+function App() {
+    return (<Layout>
+        {isAuth ? (
+            <>
+                <Header username='kama'/>
+                <Signout/>
+            </>
+        ) : <Login/>}
+        {/*{isAuth && <Signout/>}*/}
+    </Layout>)
+}
 
-ReactDOM.render(
-    <Layout>
-        {isAuth ? <Header username='kama'/> : <Login/>}
-        {isAuth && <Signout/>}
-    </Layout>,
-    rootNode
-)
+const rootNode = document.getElementById('root')
+ReactDOM.render(<App/>, rootNode)
 
 
 
