@@ -3,19 +3,12 @@ import ReactDOM from 'react-dom'
 
 
 function App() {
-    const [inputValue, setInputValue]  = React.useState('')
-    // const inputValue =inputState[0]
-    // const setInputValue=inputState[1]
-
-    function handleInputChange(event) {
-        setInputValue  (event.target.value)
-        // console.log(value)
-    }
+     const [language,setLanguage] = React.useState('python')
 
     return (
-        <div id='app'>
-            <input onChange={handleInputChange}/>
-            <p>{inputValue}</p>
+        <div>
+            <button onClick={()=>setLanguage('js')}>chang lang</button>
+            <p>i am learning {language}</p>
         </div>
     )
 }
