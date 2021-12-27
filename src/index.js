@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom'
 
 
 function App() {
-    const inputState = React.useState('')
-    const inputValue =inputState[0]
-    const setInputValue=inputState[1]
+    const [inputValue, setInputValue]  = React.useState('')
+    // const inputValue =inputState[0]
+    // const setInputValue=inputState[1]
 
     function handleInputChange(event) {
         setInputValue  (event.target.value)
