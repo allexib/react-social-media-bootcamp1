@@ -3,29 +3,23 @@ import ReactDOM from 'react-dom'
 
 
 function App() {
-    const people = ['kama', 'dave', 'jane']
+    const inputState = React.useState('')
+    const inputValue =inputState[0]
+    const setInputValue=inputState[1]
 
     function handleInputChange(event) {
-        const inputValue = event.target.value
-        console.log(inputValue)
+        setInputValue  (event.target.value)
+        // console.log(value)
     }
 
     return (
-        <ul>
-            {people.map((person, i) => <Person key={i} person={person}/>)}
+        <div id='app'>
             <input onChange={handleInputChange}/>
-        </ul>
+            <p>{inputValue}</p>
+        </div>
     )
 }
 
-function Person(props) {
-    function handlePersonClick() {
-        alert(props.person)
-
-    }
-
-    return <li onClick={handlePersonClick}>{props.person}</li>
-}
 
 const rootNode = document.getElementById('root')
 ReactDOM.render(<App/>, rootNode)
