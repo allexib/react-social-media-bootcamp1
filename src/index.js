@@ -6,26 +6,35 @@ const baseUrl = 'https://api.github.com/users/'
 function App() {
     const [username, setUsername] = React.useState('allexib')
     const [user, setUser] = React.useState(null)
+    const searchInput = React.useRef()
 
     React.useEffect(() => {
-        async function getUser(route) {
-            const response = await fetch(`${baseUrl}${route}`)
-            const data = await response.json()
-            setUser(data)
-        }
-
-        getUser(username)
+        getUser()
         // fetch(endpoint)
         //     .then(response => response.json())
         //     .then(data => setUser(data))
     }, [])
 
+    function handleClearInput() {
+        searchInput.current.value = ''
+        searchInput.current.focus()
+    }
+
+    async function getUser() {
+        const response = await fetch(`${baseUrl}${username}`)
+        const data = await response.json()
+        setUser(data)
+    }
+
+
     return (
         <div>
             <input type='text' placeholder='input username'
-                   onChange={event => setUsername(event.target.value)}/>
-            <button>search</button>
-            <button>clear</button>
+                   onChange={event => setUsername(event.target.value)}
+                   ref={searchInput}
+            />
+            <button onClick={getUser}>search</button>
+            <button onClick={handleClearInput}>clear</button>
             {user ? (
                 <div>
 
