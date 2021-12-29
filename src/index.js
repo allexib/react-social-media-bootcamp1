@@ -7,6 +7,10 @@ function App() {
 
     React.useEffect(() => {
         document.addEventListener('mousemove', handleMouseMove)
+
+        return () => {
+            document.removeEventListener('mousemove', handleMouseMove)
+        }
     }, [])
 
     function handleMouseMove(event) {
@@ -23,6 +27,12 @@ function App() {
 
 const rootNode = document.getElementById('root')
 ReactDOM.render(<App/>, rootNode)
+
+function NewPage() {
+    return <div>new page</div>
+}
+
+setTimeout(() => ReactDOM.render(<NewPage/>, rootNode), 2000)
 
 
 
