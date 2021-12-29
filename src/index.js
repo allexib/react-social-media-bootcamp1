@@ -15,7 +15,8 @@ function App() {
     // const [yearsExperience, setYearsExperience] = React.useState(0)
     React.useEffect(() => {
         document.title = developer.name
-    })
+        console.log('runs')
+    }, [developer.name])
 
     function handleChangeName(event) {
         setDeveloper({
