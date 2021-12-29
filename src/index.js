@@ -3,65 +3,19 @@ import ReactDOM from 'react-dom'
 
 
 function App() {
-    const [developer, setDeveloper] = React.useState({
-        name: '',
-        language: 'python',
-        yearsExperience: 0,
-        isEmployed: false
+    const [mousePosition, setMousePosition] = React.useState({x: 0, y: 0})
 
-    })
-
-    // const [language, setLanguage] = React.useState('python')
-    // const [yearsExperience, setYearsExperience] = React.useState(0)
     React.useEffect(() => {
-        document.title = developer.name
-        console.log('runs')
-    }, [developer.name])
+        document.addEventListener('mousemove', handleMouseMove)
+    }, [])
 
-    function handleChangeName(event) {
-        setDeveloper({
-            ...developer,
-            name: event.target.value
-        })
-    }
-
-    function handleChangeLanguage() {
-        setDeveloper({
-            language: 'js',
-            yearsExperience: 0
-        })
-    }
-
-    function handleChangeYearsExperience(event) {
-        setDeveloper({
-            ...developer,
-            yearsExperience: event.target.value
-        })
-    }
-
-    function handleToggleEmployment() {
-        setDeveloper(prevState => ({
-            ...prevState,
-            isEmployed: !prevState.isEmployed
-        }))
+    function handleMouseMove(event) {
+        setMousePosition({x: event.pageX, y: event.pageY})
     }
 
     return (
         <div>
-            <button onClick={handleToggleEmployment}>Toggle Employment Status</button>
-            <button onClick={handleChangeLanguage}
-            >chang lang
-            </button>
-            <div>
-                <input type='number' onChange={handleChangeYearsExperience}/>
-            </div>
-            <div>
-                <input type='text' onChange={handleChangeName} placeholder='change name'/>
-            </div>
-
-            <p>i am learning {developer.language}</p>
-            <p>i have {developer.yearsExperience} years of experience</p>
-            <p>Employment status: {developer.isEmployed ? 'Employed' : 'Unemployed'}</p>
+            <p>X:{mousePosition.x}, Y:{mousePosition.y}</p>
         </div>
     )
 }
