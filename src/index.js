@@ -7,9 +7,16 @@ function App() {
     const [user, setUser] = React.useState(null)
 
     React.useEffect(() => {
-        fetch(endpoint)
-            .then(response => response.json())
-            .then(data => setUser(data))
+        async function getUser() {
+            const response = await fetch(endpoint)
+            const data = await response.json()
+            setUser(data)
+        }
+        getUser()
+
+        // fetch(endpoint)
+        //     .then(response => response.json())
+        //     .then(data => setUser(data))
     }, [])
 
 
@@ -17,7 +24,7 @@ function App() {
         <div>
             <h2>{user.name}</h2>
             <p>{user.bio}</p>
-            <img alt='avatar' src={user.avatar_url} style={{height: 250}}/>
+            <img alt='avatar' src={user.avatar_url} style={{height: 350}}/>
         </div>
     ) : (
         <p>loading</p>
