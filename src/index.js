@@ -9,6 +9,7 @@ function App() {
     const searchInput = React.useRef()
 
     React.useEffect(() => {
+        
         getUser()
         // fetch(endpoint)
         //     .then(response => response.json())
