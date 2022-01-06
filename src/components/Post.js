@@ -1,17 +1,17 @@
 import React from 'react'
 
-function Post({post}) {
+function Post({image, content, user}) {
     return (
         <React.Fragment>
-            {post.image && (
+            {image && (
                 <img
                     style={{height: 200, width: 300, objectFit: 'cover'}}
-                    src={URL.createObjectURL(post.image)}
+                    src={URL.createObjectURL(image)}
                     alt='post cover'
                 />
             )}
-            <p> {post.content}</p>
-            <div>{post.user}</div>
+            <p> {content}</p>
+            <div>{user}</div>
         </React.Fragment>
     )
 }
