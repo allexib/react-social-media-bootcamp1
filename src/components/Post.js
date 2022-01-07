@@ -1,20 +1,27 @@
 import React from 'react'
+import {UserContext} from "../App";
 
-function Post({image, content, user, currentUser}) {
-    const isCurrentUser = currentUser === user
+function Post({image, content, user}) {
+    //const isCurrentUser = currentUser === user
 
     return (
-        <React.Fragment>
-            {image && (
-                <img
-                    style={{height: 200, width: 300, objectFit: 'cover'}}
-                    src={URL.createObjectURL(image)}
-                    alt='post cover'
-                />
+        <UserContext.Consumer>
+            {currentUser => (
+                <>
+                    {image && (
+                        <img
+                            style={{height: 300, width: 300, objectFit: 'cover'}}
+                            src={URL.createObjectURL(image)}
+                            alt='post cover'
+                        />
+                    )}
+                    <p> {content}</p>
+                    <div style={{color: currentUser === user && 'green'}}>{user}</div>
+                </>
             )}
-            <p> {content}</p>
-            <div style={{color: isCurrentUser && 'green'}}>{user}</div>
-        </React.Fragment>
+
+
+        </UserContext.Consumer>
     )
 }
 

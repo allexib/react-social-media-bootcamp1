@@ -4,7 +4,7 @@ import Header from './components/Header'
 import CreatePost from './components/CreatePost'
 import PostList from './components/PostList'
 
-
+export const UserContext = React.createContext()
 
 
 function App() {
@@ -20,16 +20,17 @@ function App() {
     }, [posts])
 
 
-
     if (!user) {
         return <Login setUser={setUser}/>
     }
 
-    return <>
-        <Header user={user} setUser={setUser}/>
-        <CreatePost user={user} handleAddPost={handleAddPost}/>
-        <PostList user={user} posts={posts}/>
-    </>
+    return (
+        <UserContext.Provider value={user}>
+            <Header user={user} setUser={setUser}/>
+            <CreatePost user={user} handleAddPost={handleAddPost}/>
+            <PostList posts={posts}/>
+        </UserContext.Provider>
+    )
 }
 
 export default App
